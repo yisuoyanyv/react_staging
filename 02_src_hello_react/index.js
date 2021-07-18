@@ -2,8 +2,8 @@
 import React from 'react'
 //引入ReactDOM
 import ReactDOM from 'react-dom'
-//引入App
+//引入APP组件
 import App from './App'
 
-ReactDOM.render(<App/>,document.getElementById('root'))
-
+//渲染APP到页面
+ReactDOM.render(<App />,document.getElementById('root'))
