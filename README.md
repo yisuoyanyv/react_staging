@@ -8,3 +8,11 @@
         2.【子组件】给【父组件】传递数据：通过props传递，要求父提前给子传递一个函数
     4.注意defaultChecked 和 checked的区别，类似的还有：defaultValue 和 value
     5.状态在哪里，操作状态的方法就在哪里
+
+
+## ES6语法
+连续解构赋值+重命名
+
+let obj2 = {a:{b:1}}
+const {a:{b:data}} = obj2
+console.log(data)
