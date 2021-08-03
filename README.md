@@ -117,6 +117,7 @@
             -this.props.history.go()
 
 ## 十三、BrowserRouter与HashRouter的区别
+
         1.底层原理不一样：
             BrowserRouter使用的是H5的history API，不兼容IE9及以下版本。HashRouter使用的是URL的哈希值。
         2.path表现形式不一样
@@ -126,3 +127,34 @@
             （1）BrowserRouter没有任何影响，因为state保存再history对象中
             （2）HashRouter刷新后会导致路由state参数的丢失
         4.备注：HashRouter可以用于解决一些路径错误相关的问题。
+
+## 十四、 antd的按需引入+自定主题
+        1.安装依赖： npm  i react-app-rewired customize-cra babel-plugin-import less less-loader
+        2.修改package.json
+        ...
+        "scripts": {
+            "start": "react-app-rewired start",
+            "build": "react-app-rewired build",
+            "test": "react-app-rewired test",
+            "eject": "react-scripts eject"
+        },
+        3.根目录下创建config-overrides.js
+            //配置具体的修改规则
+            const { override, fixBabelImports,addLessLoader} = require('customize-cra');
+
+            module.exports = override(
+                fixBabelImports('import',{
+                    libraryName:'antd',
+                    libraryDirectory: 'es',
+                    style: true
+                }),
+                addLessLoader({
+                    lessOptions: {
+                        javascriptEnabled: true,
+                        modifyVars: {'@primary-color': 'pink'},
+                    }     
+                }),
+            );
+        4.备注：不用再组件里亲自引入样式了，即：import 'antd/dist/antd.css'应该删掉
+
+
